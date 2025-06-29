@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Popularity Predictor</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f0; padding: 30px; }
+        h1 { color: #333; }
+        form { background: #fff; padding: 20px; border-radius: 5px; max-width: 500px; margin: auto; }
+        label { display: block; margin-top: 10px; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        .result { text-align: center; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1 style="display: block;align-items: center;">🎶 Music Popularity Predictor</h1>
+    <form method="POST" action="/predict">
+        <label>Danceability:</label> <input type="number" name="danceability" step="0.001" min="0" max="1" required>
+        <label>Energy:</label> <input type="number" name="energy" step="0.001" min="0" max="1" required>
+        <label>Loudness:</label> <input type="number" name="loudness" step="0.001" min="-60" max="0" required>
+        <label>Acousticness:</label> <input type="number" name="acousticness" step="0.0001" min="0" max="1" required>
+        <label>Valence:</label> <input type="number" name="valence" step="0.001" min="0" max="1" required>
+        <label>Tempo:</label> <input type="number" name="tempo" step="0.001" min="100" max="200" required>
+        <label>Explicit (1 for Yes, 0 for No):</label> <input type="number" name="explicit" min="0" max="1" required>
+        <label>Speechiness:</label> <input type="number" name="speechiness" step="0.0001" min="0" max="1" required>
+        <label>Instrumentalness:</label> <input type="number" name="instrumentalness" step="0.00001" min="0" max="1" required>
+        <label>Liveness:</label> <input type="number" name="liveness" step="0.0001" min="0" max="1" required>
+        <!-- <label>Duration:</label> <input type="number" name="duration" step="1" min="0" required> -->
+        <label>Key:</label> <input type="number" name="key" step="1" min="0" max="50" required>
+        <label>Mode:</label> <input type="number" name="mode" step="1" min="0" max="1" required>
+        <button type="submit" style="margin-top: 20px;">Predict</button>
+    </form>
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</body>
+</html>
